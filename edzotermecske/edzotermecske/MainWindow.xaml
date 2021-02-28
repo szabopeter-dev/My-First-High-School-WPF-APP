@@ -14,17 +14,14 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Grid DataContext="{StaticResource VM}" Grid.Column="0">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+        <Grid Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+                
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <TextBox x:Name="TB" Grid.Column="0" />
-            <TextBlock x:Name="TB_Num" Grid.Column="1"/>
+            
+            <TextBlock x:Name="TB_Num"/>
+            <TextBox x:Name="TB"/>
         </Grid>
         <Grid Grid.Column="1">
 
