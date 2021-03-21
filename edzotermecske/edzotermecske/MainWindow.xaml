@@ -9,52 +9,19 @@
     <Window.Resources>
         <local:MainVM x:Key="VM"/>
     </Window.Resources>
-    <Grid>
+    <Grid DataContext="{StaticResource ResourceKey=VM}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-
-            </Grid.RowDefinitions>
-            <TextBox x:Name="TB" Grid.Column="0" TextChanged="TB_TextChanged"/>
-            <TextBlock x:Name="TB_Num" Grid.Column="1"/>
-            
-        </Grid>
-        <Grid DataContext="{StaticResource VM}" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-
-                </Grid.RowDefinitions>
-                <TextBox Text="{Binding Path=SearchWord, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" />
-                <TextBlock Text="{Binding Path=CharNum, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
-
-            </Grid>
-            <Grid Grid.Column="1">
-
-            </Grid>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Path=Length_SearchWord}" Grid.Row="0" />
+        <TextBox Text="{Binding Path=SearchWord, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
+        <Button Content="Clear" Command="{Binding Path=CMD_Clear}"  Grid.Row="2"/>
     </Grid>
 
 

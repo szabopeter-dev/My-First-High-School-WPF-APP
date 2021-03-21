@@ -25,9 +25,7 @@ namespace edzotermecske
             InitializeComponent();
         }
 
-        private void TB_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TB_Num.Text = TB.Text.Length + "db";
-        }
+       
+      
     }
 }

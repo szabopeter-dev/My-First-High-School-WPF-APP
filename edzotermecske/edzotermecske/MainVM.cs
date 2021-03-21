@@ -1,37 +1,37 @@
 ﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GalaSoft.MvvmLight.CommandWpf;
+using System.Windows.Input;
 
 namespace edzotermecske
 {
     class MainVM : ViewModelBase
-    {
 
+    {
         public MainVM()
         {
-            this.PropertyChanged += MainVM_PropertyChanged;
+            CMD_Clear = new RelayCommand(Clear);
         }
-
-        private void MainVM_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            switch(e.PropertyName)
+        //textblock databinding
+        private int length_SearchWord;
+        //textbox db
+        private string searchWord;
+        public string SearchWord
+        { 
+            get => searchWord;
+            set
             {
-                case "SearchWord":
-                    CharNum = SearchWord.Length;
-                    break;
-                default:
-                    break;
+
+                Set(ref searchWord, value);
+                Length_SearchWord = searchWord.Length;
             }
         }
+        public int Length_SearchWord { get => length_SearchWord; set => Set(ref length_SearchWord, value); }
 
-        private string searchWord;
-        private int charNum;
-
-        public string SearchWord { get => searchWord; set => Set(ref searchWord, value); }
-        public int CharNum { get => charNum; set => Set(ref charNum, value); }
+        public ICommand CMD_Clear { get; set; }
+        private void Clear()
+        {
+            SearchWord = "";
+        }
 
     }
 }
