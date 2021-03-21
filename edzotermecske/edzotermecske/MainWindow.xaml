@@ -18,10 +18,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Path=Length_SearchWord}" Grid.Row="0" />
-        <TextBox Text="{Binding Path=SearchWord, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
-        <Button Content="Clear" Command="{Binding Path=CMD_Clear}"  Grid.Row="2"/>
+        <TextBlock Text="{Binding Path=Length_SearchWord}" Grid.Row="0" Grid.ColumnSpan="2" Margin="94,2,434,5" Grid.RowSpan="2" />
+        <TextBlock Text="{Binding Path=Length_Elements}" Grid.Row="0" Margin="247,2,504,5" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+        <TextBox Text="{Binding Path=SearchWord, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.ColumnSpan="2" Margin="-3,11,527,365" Grid.RowSpan="3"/>
+        <ListBox ItemsSource="{Binding Path=Elements}" Grid.Row="3" Margin="-2,46,2,0"/>
+        <Button Content="Push edzésgyakorlat hozzáadása:" Command="{Binding Path=CMD_Add}"  Grid.Row="2" Margin="-2,19,2,340" Grid.RowSpan="2"/>
+        <Button Content="Karakter szám:" Margin="0,-2,181,12" Grid.RowSpan="2"/>
+        <Button Content="Gyakorlat szám:" Margin="146,-4,24,9" Grid.RowSpan="2"/>
+        <Button Content="Cutler Gym" Margin="13,2,206,3" Grid.RowSpan="2" Grid.Column="1" Background="DarkOrange"  FontWeight="Heavy" />
     </Grid>
 
 
