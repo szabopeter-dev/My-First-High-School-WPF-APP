@@ -78,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Employee.cs" />
     <Compile Include="IComm.cs" />
     <Compile Include="kezisulyzok.cs" />
     <Compile Include="labgepek.cs" />

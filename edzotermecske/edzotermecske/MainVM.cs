@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace edzotermecske
 {
@@ -12,13 +13,18 @@ namespace edzotermecske
     {
         public MainVM()
         {
-
-            CMD_Clear = new RelayCommand(Clear);
             CMD_Add = new RelayCommand(Add, AddCanExecute);
-            Elements = new ObservableCollection<string>();
-            Elements.CollectionChanged += Elements_CollectionChanged;
-            this.PropertyChanged += MainVM_PropertyChanged;
+            CMD_New = new RelayCommand(New, NewCanExecute);
+            CMD_Del = new RelayCommand(Del, DelCanExecute);
+            
+            Employees = new ObservableCollection<Employee>();
+            this.PropertyChanged += MainVM_PropertyChanged; 
+            
+            
+            
         }
+
+        
 
         private void MainVM_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -26,6 +32,9 @@ namespace edzotermecske
             {
                 case "SearchWord":
                     Length_SearchWord = SearchWord.Length;
+                    break;
+                case "Selected":
+                    SelectedNotNull = Selected != null;
                     break;
                 default:
                     break;
@@ -50,31 +59,54 @@ namespace edzotermecske
             set => Set(ref searchWord, value);
               
         }
+
+        private Employee selected;
+        private bool selectedNotNull;
+
+
+
         public int Length_SearchWord { get => length_SearchWord; set => Set(ref length_SearchWord, value); }
         public int Length_Elements { get => length_Elements; set => Set(ref length_Elements, value); }
 
-        public ICommand CMD_Clear { get; set; }
-        public ICommand CMD_Add { get; set; }
-        private void Clear()
-        {
-            SearchWord = "";
-        }
+        public bool SelectedNotNull { get => selectedNotNull; set => Set(ref selectedNotNull, value); }
 
-        private void Add()
-        {
-
-            Elements.Add(SearchWord);
-            SearchWord = "";
-
-
-        }
-
-        private bool AddCanExecute()
-        {
-            return !string.IsNullOrWhiteSpace(SearchWord);
-        }
 
         public ObservableCollection<string> Elements { get; private set; }
 
+
+        public ObservableCollection<Employee> Employees { get; private set; }
+        public Employee Selected { get => selected; set => Set(ref selected, value); }
+
+        public ICommand CMD_Add { get; private set; }
+        public ICommand CMD_New { get; private set; }
+        public ICommand CMD_Del { get; private set; }
+      
+
+        private void Add()
+        {
+            Employees.Add(Selected);
+        }
+        private bool AddCanExecute()
+        {
+            return SelectedNotNull && !string.IsNullOrWhiteSpace(Selected.FirstName) && !string.IsNullOrWhiteSpace(Selected.LastName) && !Employees.Contains(Selected);
+        }
+        private void Del()
+        {
+            Employees.Remove(Selected);
+            
+            
+        }
+        private bool DelCanExecute()
+        {
+            return SelectedNotNull && Employees.Contains(Selected);
+        }
+        private void New()
+        {
+            Selected = new Employee();
+        }
+        private bool NewCanExecute()
+        {
+            return true;
+        }
     }
 }
