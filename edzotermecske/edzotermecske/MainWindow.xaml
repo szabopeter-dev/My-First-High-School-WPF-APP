@@ -35,15 +35,16 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Content="First name:" IsEnabled="{Binding Path=SelectedNotNull}"/>
-            <Label Grid.Row="1" Content="Last name:" IsEnabled="{Binding Path=SelectedNotNull}"/>
-            <Label Grid.Row="2" Content="Birth date:" IsEnabled="{Binding Path=SelectedNotNull}"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Selected.FirstName, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=SelectedNotNull}" />
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Selected.LastName,  UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=SelectedNotNull}"/>
-            <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding Path=Selected.BirthDate,  UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=SelectedNotNull}"/>
-            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="New" Command="{Binding Path=CMD_New}" Margin="0,23,0,-23"/>
-            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Add" Command="{Binding Path=CMD_Add}" Margin="0,50,0,-50"/>
-            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Del" Command="{Binding Path=CMD_Del}" Margin="0,78,0,-78"/>
+            <Button Content="Edzés Napló:" Background="LightGreen" FontSize="20" FontWeight="Medium" Grid.ColumnSpan="2"></Button>
+            <Label Grid.Row="2" Content="Edzés neve:" IsEnabled="{Binding Path=SelectedNotNull}" Margin="0,88,0,-68"/>
+            <Label Grid.Row="2" Content="Izomcsoport:" IsEnabled="{Binding Path=SelectedNotNull}" Margin="0,118,0,-99"/>
+            <Label Grid.Row="2" Content="Dátum:" IsEnabled="{Binding Path=SelectedNotNull}" Margin="0,151,0,-133"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Selected.FirstName, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=SelectedNotNull}" Margin="0,88,0,-67" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Selected.LastName,  UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=SelectedNotNull}" Margin="1,119,0,-98"/>
+            <DatePicker Grid.Row="2" SelectedDate="{Binding Path=Selected.BirthDate,  UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=SelectedNotNull}" Margin="0,151,0,-135" Grid.Column="1"/>
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="New" Command="{Binding Path=CMD_New}" Margin="0,185,0,-185"/>
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Add" Command="{Binding Path=CMD_Add}" Margin="0,230,0,-230"/>
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Del" Command="{Binding Path=CMD_Del}" Margin="-1,276,1,-276"/>
         </Grid>
     </Grid>
 

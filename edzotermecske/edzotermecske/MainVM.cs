@@ -18,7 +18,7 @@ namespace edzotermecske
             CMD_Del = new RelayCommand(Del, DelCanExecute);
             
             Employees = new ObservableCollection<Employee>();
-            this.PropertyChanged += MainVM_PropertyChanged; 
+            this.PropertyChanged += MainVM_PropertyChanged;
             
             
             
